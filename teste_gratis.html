@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0a0b0e" />
+  <meta name="description" content="Zika IA: melhore fotos, restaure rostos, amplie anime e desenhos e remova fundos. Compare resultados reais no Zika IA." />
+  <title>Zika IA — Teste grátis offline (sem GPU)</title>
+  <link rel="icon" href="./assets/zika-z-liso-transparente.png" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./demo_free.css" />
+  <script src="./config.js" defer></script>
+  <script src="./app.js" defer></script>
+  <script src="./cloud.js" defer></script>
+  <script src="./demo_auth.js" defer></script>
+  <script src="./demo_free.js" defer></script>
+</head>
+<body>
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="Zika IA — início"><img class="brand-logo" src="./assets/zika-ia-logo-transparente.png" alt="Zika IA"/></a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#studio" data-go-tool="photo" data-i18n="navPhoto">Melhorar imagem</a>
+      <a href="#studio" data-go-tool="anime" data-i18n="navAnime">Anime e Desenho</a>
+      <a href="#studio" data-go-tool="removebg" data-i18n="navRemove">Remover fundo</a>
+      <a href="#details" data-i18n="navFeatures">Ferramentas</a>
+      <a href="#plans" data-i18n="navPlans">Planos</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-control" role="group" aria-label="Language"><button class="lang-btn active" data-lang="pt" aria-pressed="true">PT</button><button class="lang-btn" data-lang="en" aria-pressed="false">EN</button><button class="lang-btn" data-lang="es" aria-pressed="false" title="Español">ES</button></div>
+      <span id="devRoleBadge" class="developer-role-badge" hidden>DESENVOLVEDOR</span><button id="accountButton" class="account-button" type="button">Entrar / Criar conta</button>
+      <a href="#studio" class="top-cta" data-i18n="start">Começar agora <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+  <nav id="mobileMenu" class="mobile-menu" hidden aria-label="Menu mobile"><a href="#studio" data-go-tool="photo" data-i18n="navPhoto">Melhorar imagem</a><a href="#studio" data-go-tool="anime" data-i18n="navAnime">Anime e Desenho</a><a href="#studio" data-go-tool="removebg" data-i18n="navRemove">Remover fundo</a><a href="#details" data-i18n="navFeatures">Ferramentas</a>
+      <a href="#plans" data-i18n="navPlans">Planos</a></nav>
+</header>
+<main>
+  <section class="hero section-container" id="studio">
+    <div class="hero-kicker"><span class="sparkle-burst">✳</span><span data-i18n="eyebrow">EDIÇÃO DE IMAGENS COM INTELIGÊNCIA ARTIFICIAL</span><span class="kicker-dot"></span><span> ZIKA ENGINE</span></div>
+    <h1><span data-i18n="heroLead">Melhore a qualidade da sua imagem</span><br/><span class="red-text" data-i18n="heroHighlight">com inteligência artificial.</span></h1>
+    <p class="hero-sub" data-i18n="heroDescription">Rostos, fotos, animes e desenhos com mais definição. Escolha uma ferramenta, envie sua imagem e compare os detalhes.</p>
+    <div id="trialBanner" role="note" aria-label="Aviso do teste gratuito"><div><strong id="trialBannerTitle">MODO TESTE GRÁTIS • FUNCIONA OFFLINE</strong><p id="trialBannerDesc">Teste créditos, envio e PNG com marca d’água. Aqui usamos filtros simples do navegador, NÃO o motor de IA. Nenhum pagamento ou cadastro real.</p></div><button id="resetFreeTest" type="button">Reiniciar teste</button></div>
+    <div class="studio-shell">
+      <div class="tool-switch" role="tablist" aria-label="Ferramentas Zika IA">
+        <button class="tool-tab active" id="tab-photo" data-tool="photo" role="tab" aria-selected="true" aria-controls="uploadPanel"><span class="tab-icon">✦</span><span data-i18n="tabPhoto">Melhorar Foto</span></button>
+        <button class="tool-tab" id="tab-anime" data-tool="anime" role="tab" aria-selected="false" aria-controls="uploadPanel"><span class="tab-icon">✳</span><span data-i18n="tabAnime">Anime e Desenho</span></button>
+        <button class="tool-tab" id="tab-removebg" data-tool="removebg" role="tab" aria-selected="false" aria-controls="uploadPanel"><span class="tab-icon">▧</span><span data-i18n="tabRemove">Remover Fundo</span></button>
+        <div class="toolbar-trailing"><span class="live-dot"></span><span data-i18n="liveStatus">Prévia pronta para testar</span></div>
+      </div>
+      <div class="studio-grid">
+        <section class="upload-side" id="uploadPanel" aria-label="Enviar imagem">
+          <div class="panel-head"><div><p class="mini-label" data-i18n="uploadTitleMini">SUA IMAGEM</p><h2 id="toolTitle" data-i18n="toolPhotoTitle">Melhorar fotos e rostos</h2><p class="tool-subtitle" id="toolDescription" data-i18n="toolPhotoDesc">Detecção automática de rostos, fundo e paisagens.</p></div><div class="setting-bubble" aria-hidden="true">✦</div></div>
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Escolher imagens"><input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp,image/bmp,image/gif,image/avif" multiple hidden />
+            <div class="empty-drop" id="emptyDrop"><div class="upload-icon"><svg viewBox="0 0 24 24" width="33" height="33" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 16 5-6 4 4 3-3 6 6"/><circle cx="16" cy="8" r="2"/><path d="M12 9v9m-3-3 3 3 3-3"/></svg></div><h3 data-i18n="dropMain">Arraste suas imagens aqui</h3><p data-i18n="dropSub">ou selecione arquivos no seu dispositivo</p><button type="button" class="choose-button" id="chooseFiles" data-i18n="selectImages">Selecionar imagens</button><div class="format-list">PNG · JPG · WEBP · BMP · GIF · AVIF</div><small class="drop-hint" data-i18n="batchHint">Até 20 imagens por vez · máximo 20 MB por arquivo</small></div>
+            <div class="selected-files" id="selectedFiles" hidden><div class="selected-head"><span data-i18n="selectedFilesLabel">IMAGENS SELECIONADAS</span><button type="button" id="clearFiles" class="text-button" data-i18n="clear">Limpar tudo</button></div><div id="fileList" class="file-list"></div><button type="button" id="addFiles" class="add-images" data-i18n="addImages">+ Adicionar imagens</button></div>
+          </div>
+          <div class="settings-title"><span data-i18n="settingsLabel">AJUSTES DA IMAGEM</span><span class="settings-tag" data-i18n="upscaleOptions">Opções de ampliação do Zika IA</span></div>
+          <div class="settings-grid">
+            <div class="field-group" id="scaleField"><label for="scaleSelect" data-i18n="scaleLabel">Super resolução</label><select id="scaleSelect"><option value="1">1× — Original melhorado</option><option value="2">2× — Leve</option><option value="4" selected>4× — Alta definição</option><option value="5">5× — IA + ajuste</option><option value="6">6× — IA + ajuste</option><option value="7">7× — IA + ajuste</option><option value="8">8× — Máxima ampliação</option></select></div>
+            
+          </div>
+          <div class="resolution-preview" id="resolutionPreview"><span class="res-symbol">⌗</span><div><small data-i18n="outputSize">TAMANHO PREVISTO</small><strong id="sizeEstimate">Envie uma imagem para ver a resolução</strong><small id="sizeSecondary" data-i18n="sizeHint">O tamanho será calculado automaticamente</small></div><span class="resolution-arrow">↗</span></div>
+          <button id="processButton" type="button" class="process-cta" disabled><span>✦</span><span data-i18n="process">Melhorar imagem</span><span class="btn-arrow">→</span></button>
+          <div class="service-notice"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg><span id="serverNote" data-i18n="previewDisclosure">Prévia e configurações disponíveis. O processamento online exige conectar um servidor GPU à API do site.</span></div>
+          <div id="creditMeter" class="credit-meter">Acesse sua conta para consultar créditos.</div>
+          <p id="trialTip">Para gastar 1 crédito, escolha Anime 2× ou Remover Fundo.</p><div id="costEstimator" class="cost-estimator">Créditos necessários: 3 por imagem (foto 4×).</div>
+          <button type="button" id="cancelSubscription" class="cancel-subscription" hidden data-i18n="cancelSubscription">Cancelar renovação automática</button>
+          <div class="plan-inline-note" id="planNote">Seu plano atual: Grátis com marca d'água</div>
+        </section>
+        <section class="demo-side" aria-label="Comparação antes e depois">
+          <div class="demo-head"><div><p class="mini-label" data-i18n="actualResult">RESULTADO REAL NO ZIKA IA</p><h2 data-i18n="demoTitle">Veja os detalhes ganharem vida.</h2></div><span class="demo-live">✧ <span data-i18n="interactive">INTERATIVO</span></span></div>
+          <div class="compare-wrap" id="compareWrap"><div class="compare-stage" id="compareStage" data-demo="photo"><img id="beforeImage" class="compare-photo before-photo" src="./assets/foto-antes.webp" alt="Foto antes da melhoria"/><div class="after-layer" id="afterLayer"><img id="afterImage" class="compare-photo" src="./assets/foto-depois.webp" alt="Foto após melhoria pelo Zika IA" /></div><div class="handle-line" id="handleLine"><span class="handle-knob">‹ ›</span></div><span class="image-tag image-tag-after" data-i18n="after">DEPOIS</span><span class="image-tag image-tag-before" data-i18n="before">ANTES</span><input type="range" min="0" max="100" value="52" id="compareRange" class="compare-range" aria-label="Arraste para comparar antes e depois"/></div></div>
+          <div class="demo-footer"><div><strong id="demoLabel" data-i18n="photoDemo">Melhorar Foto</strong><span id="demoDescription" data-i18n="photoDemoDetail">Teste real: rostos, cabelo e paisagem</span><span class="demo-size" id="demoSizes">424 × 530 px → 1638 × 2048 px</span></div><span class="demo-badge" id="demoBadge">ZIKA IA · FOTO</span></div>
+          <div class="demo-thumbnails" role="group" aria-label="Escolher exemplo"><div class="demo-choices"><button class="demo-thumb active" data-demo="photo" type="button" aria-pressed="true"><img src="./assets/foto-depois.webp" alt=""/><span data-i18n="photoThumb">Foto</span></button><button class="demo-thumb" data-demo="anime" type="button" aria-pressed="false"><img src="./assets/anime-depois.webp" alt=""/><span data-i18n="animeThumb">Desenho</span></button><button class="demo-thumb" data-demo="removebg" type="button" aria-pressed="false"><img src="./assets/removebg-depois.png" alt=""/><span data-i18n="removeThumb">Remover fundo</span></button></div><div class="demo-tip"><span>☝</span><span data-i18n="dragTip">Arraste a linha para comparar</span></div></div>
+          <p class="demo-source" data-i18n="demoNote">Antes/Depois feito com arquivos reais enviados para o projeto. Não é uma simulação de processamento online.</p>
+        </section>
+      </div>
+    </div>
+    <div class="trust-strip"><span>✦ <span data-i18n="trustFirst">Rostos + paisagens em um só modo</span></span><span>✳ <span data-i18n="trustSecond">Modelo dedicado para anime</span></span><span>◎ <span data-i18n="trustThird">Processamento de várias imagens</span></span><span>↗ <span data-i18n="trustFourth">Até 8× de ampliação</span></span></div>
+  </section>
+
+  <section class="features section-container" id="details"><div class="section-heading"><div class="eyebrow">✦ <span data-i18n="toolsEyebrow">FERRAMENTAS ZIKA IA</span></div><h2 data-i18n="featuresTitle">Uma IA para cada tipo de imagem.</h2><p data-i18n="featuresSubtitle">Tudo o que você precisa em um único estúdio online.</p></div>
+    <div class="feature-grid"><article class="feature-card"><div class="feature-emblem emblem-red">✦</div><span class="feature-index">01 / 03</span><h3 data-i18n="featurePhotoTitle">Melhorar Foto</h3><p data-i18n="featurePhotoText">Restauração automática de rostos, fotos de grupo, cabelo, cenário e paisagens, sem selecionar áreas manualmente.</p><ul><li data-i18n="photoPoint1">Rostos e cenários em uma etapa</li><li data-i18n="photoPoint2">Redução de ruídos e artefatos</li></ul><button class="feature-action" data-select-tool="photo" data-i18n="useFeature">Experimentar ↗</button></article>
+    <article class="feature-card feature-spotlight"><div class="feature-emblem emblem-teal">✳</div><span class="feature-index">02 / 03</span><h3 data-i18n="featureAnimeTitle">Anime e Desenho</h3><p data-i18n="featureAnimeText">Mais definição em traços, olhos, cabelos, contornos de personagens e cenários ilustrados.</p><ul><li data-i18n="animePoint1">Real-ESRGAN x4plus Anime</li><li data-i18n="animePoint2">Modo Qualidade com TTA</li></ul><button class="feature-action" data-select-tool="anime" data-i18n="useFeature">Experimentar ↗</button></article>
+    <article class="feature-card"><div class="feature-emblem emblem-purple">▧</div><span class="feature-index">03 / 03</span><h3 data-i18n="featureRemoveTitle">Remover Fundo</h3><p data-i18n="featureRemoveText">Isola pessoas e objetos para gerar PNG com transparência, com qualidade automática.</p><ul><li data-i18n="removePoint1">BiRefNet General</li><li data-i18n="removePoint2">PNG transparente</li></ul><button class="feature-action" data-select-tool="removebg" data-i18n="useFeature">Experimentar ↗</button></article></div>
+  </section>
+
+
+  <section class="pricing section-container" id="plans">
+    <div class="section-heading">
+      <div class="eyebrow">✦ <span data-i18n="pricingEyebrow">PLANOS ZIKA IA</span></div>
+      <h2 data-i18n="pricingTitle">Mais qualidade. Menos custo.</h2>
+      <p data-i18n="pricingSubtitle">Escolha seu plano, renove seus créditos mensalmente e cancele quando quiser.</p>
+    </div>
+    <div class="billing-summary"><span class="billing-dot"></span><strong data-i18n="billingSummary">Assinatura automática e segura</strong><span data-i18n="billingDetail">Mensais: cartão cobrado todo mês • Anual: cartão cobrado uma vez por ano</span></div>
+    <div class="pricing-grid">
+      <article class="plan-card" data-plan="free">
+        <div class="plan-topline"><span class="plan-state hidden-state"></span><span class="plan-mini-icon">✦</span></div>
+        <h3 data-i18n="freePlan">Grátis</h3>
+        <div class="price-row"><strong>US$ 0</strong></div>
+        <div class="price-brl">R$ 0</div>
+        <div class="credit-pill"><b>3</b> <span data-i18n="creditsOnce">créditos iniciais</span></div>
+        <p class="plan-sub" data-i18n="freePlanSub">Uma única vez por conta</p>
+        <ul class="plan-list"><li data-i18n="freeFeat1">Marca d'água no download</li><li data-i18n="freeFeat2">Teste as três ferramentas</li><li data-i18n="freeFeat3">Sem cartão de crédito</li></ul>
+        <a href="#studio" class="plan-button plan-muted" data-i18n="freePlanBtn">Começar grátis</a>
+      </article>
+      <article class="plan-card" data-plan="starter">
+        <div class="plan-topline"><span class="plan-state hidden-state"></span><span class="plan-mini-icon">◈</span></div>
+        <h3 data-i18n="starterPlan">Starter</h3>
+        <div class="price-row"><strong>US$ 5,99</strong><span data-i18n="perMonth">/mês</span></div>
+        <div class="price-brl">R$ 29,90 <span data-i18n="perMonth">/mês</span></div>
+        <div class="credit-pill"><b>150</b> <span data-i18n="creditsMonthly">créditos/mês</span></div>
+        <p class="plan-sub" data-i18n="starterPlanSub">Para usar no dia a dia</p>
+        <ul class="plan-list"><li data-i18n="noWatermark">Sem marca d'água</li><li data-i18n="renewMonthly">Créditos renovados mensalmente</li><li data-i18n="autoCardMonthly">Cartão cobrado todo mês</li></ul>
+        <a href="#studio" class="plan-button" data-i18n="subscribe">Assinar Starter</a>
+      </article>
+      <article class="plan-card featured" data-plan="pro">
+        <div class="plan-topline"><span class="plan-state plan-recommended" data-i18n="mostPopular">MAIS POPULAR</span><span class="plan-mini-icon">✳</span></div>
+        <h3 data-i18n="proPlan">Pro</h3>
+        <div class="price-row"><strong>US$ 9,99</strong><span data-i18n="perMonth">/mês</span></div>
+        <div class="price-brl">R$ 49,90 <span data-i18n="perMonth">/mês</span></div>
+        <div class="credit-pill"><b>250</b> <span data-i18n="creditsMonthly">créditos/mês</span></div>
+        <p class="plan-sub" data-i18n="proPlanSub">Para quem melhora muitas imagens</p>
+        <ul class="plan-list"><li data-i18n="noWatermark">Sem marca d'água</li><li data-i18n="batchAccess">Processamento em lote</li><li data-i18n="renewMonthly">Créditos renovados mensalmente</li></ul>
+        <a href="#studio" class="plan-button" data-i18n="subscribePro">Assinar Pro</a>
+      </article>
+      <article class="plan-card" data-plan="annual">
+        <div class="plan-topline"><span class="plan-state annual-label" data-i18n="bestEconomy">MAIS ECONÔMICO</span><span class="plan-mini-icon">⌁</span></div>
+        <h3 data-i18n="annualPlan">Anual</h3>
+        <div class="price-row"><strong>US$ 39,99</strong><span data-i18n="perYear">/ano</span></div>
+        <div class="price-brl">R$ 199,90 <span data-i18n="perYear">/ano</span></div>
+        <div class="credit-pill"><b>100</b> <span data-i18n="creditsMonthly">créditos/mês</span></div>
+        <p class="plan-sub" data-i18n="annualPlanSub">12 meses de acesso • equivalente a US$ 3,33/mês</p>
+        <ul class="plan-list"><li data-i18n="noWatermark">Sem marca d'água</li><li data-i18n="annualCharge">Pagamento anual antecipado</li><li data-i18n="annualRefill">100 créditos renovados a cada mês</li></ul>
+        <a href="#studio" class="plan-button" data-i18n="subscribeAnnual">Assinar Anual</a>
+      </article>
+    </div>
+    <p class="price-disclaimer" id="checkoutNotice">Prévia comercial: o checkout só funcionará depois de configurar as contas e testar a GPU.</p>
+    <div class="plan-policy"><span>✦</span><p data-i18n="policyExplain">Os créditos não acumulam: ao renovar, seu saldo vira a nova quantidade do plano. A renovação automática pode ser cancelada antes da próxima cobrança. O acesso continua até o fim do período pago.</p></div>
+    <div class="credits-box">
+      <div class="credits-copy"><div class="eyebrow">✦ <span data-i18n="creditsEyebrow">CRÉDITOS POR IMAGEM</span></div><h3 data-i18n="creditsTitle">Você sabe o custo antes de processar.</h3><p data-i18n="creditsIntro">A qualidade é automática. Operações mais pesadas gastam mais créditos para manter o preço justo.</p></div>
+      <div class="credits-rates">
+        <div class="rates-head"><span data-i18n="toolRate">Ferramenta</span><span>2×</span><span>4×</span><span>8×</span></div>
+        <div class="rates-row"><strong data-i18n="tabPhoto">Melhorar Foto</strong><span>2</span><span>3</span><span>10</span></div>
+        <div class="rates-row"><strong data-i18n="tabAnime">Anime e Desenho</strong><span>1</span><span>2</span><span>5</span></div>
+        <div class="rates-row"><strong data-i18n="tabRemove">Remover Fundo</strong><span>1</span><span>1</span><span>1</span></div>
+        <p class="rates-foot" data-i18n="ratesFoot">1× usa o custo de 2×. Para 5×–7×, o site mostra o custo exato ao escolher a ampliação. Remover fundo preserva as dimensões.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq section-container" id="faq"><div class="section-heading"><div class="eyebrow">✳ <span data-i18n="faqEyebrow">INFORMAÇÕES IMPORTANTES</span></div><h2 data-i18n="faqTitle">Como funciona esta versão?</h2></div><div class="faq-grid"><details open><summary data-i18n="faq1Title">O site já melhora imagens de verdade?</summary><p data-i18n="faq1Answer">O envio, a prévia, o cálculo de resolução e o Antes/Depois funcionam no navegador. O processamento de IA precisa de um servidor GPU conectado ao endpoint configurável.</p></details><details><summary data-i18n="faq2Title">As opções são as da versão atualizada?</summary><p data-i18n="faq2Answer">Sim: Melhorar Foto, Anime e Desenho, Remover Fundo, escalas 1×, 2× e 4× a 8×, Qualidade automática e seleção de múltiplas imagens.</p></details><details><summary data-i18n="faq3Title">O Antes/Depois de anime é real?</summary><p data-i18n="faq3Answer">Sim. Usamos os dois arquivos fornecidos para este projeto: a ilustração original e seu resultado de melhoria pelo Zika IA. A origem e os direitos da ilustração devem ser verificados antes da publicação comercial.</p></details></div></section>
+</main>
+<footer class="footer"><div class="section-container footer-grid"><a class="brand footer-brand" href="#top"><img class="brand-logo" src="./assets/zika-ia-logo-transparente.png" alt="Zika IA"/></a><p data-i18n="footerDesc">Seu estúdio de imagens com inteligência artificial.</p><div class="footer-links"><a href="#studio" data-i18n="navPhoto">Melhorar imagem</a><a href="#details" data-i18n="navFeatures">Ferramentas</a><a href="#plans" data-i18n="navPlans">Planos</a><a href="#faq" data-i18n="faqLabel">Dúvidas</a></div><section class="footer-contact" aria-label="Contato Zika IA">
+      <div class="footer-contact-copy">
+        <span class="footer-contact-kicker" data-i18n="contactKicker">CONTATO</span>
+        <h3 data-i18n="contactTitle">Fale com o Zika IA</h3>
+        <p data-i18n="contactDescription">Dúvidas, sugestões ou parcerias? Entre em contato.</p>
+      </div>
+      <div class="footer-contact-actions">
+        <a class="contact-link" href="mailto:djvinidr76play@gmail.com" aria-label="Enviar e-mail para djvinidr76play@gmail.com">
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3.5 6.5 8.5 6.4 8.5-6.4"/></svg></span>
+          <span class="contact-text"><span class="contact-kind" data-i18n="contactEmail">E-mail</span><strong>djvinidr76play@gmail.com</strong></span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact-link" href="https://www.instagram.com/zikaupscayl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Zika IA, @zikaupscayl">
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+          <span class="contact-text"><span class="contact-kind">Instagram</span><strong>@zikaupscayl</strong></span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section><div class="footer-bottom">© <span id="year"></span> ZIKA IA <span data-i18n="footerStatus">Prévia de site • API do motor ainda não conectada</span></div></div></footer>
+
+<dialog id="authDialog" class="auth-dialog" aria-labelledby="authTitle">
+  <div class="auth-modal-top"><h2 id="authTitle">Minha conta Zika IA</h2><button id="closeAuth" class="auth-close" type="button" aria-label="Fechar">×</button></div>
+  <div class="auth-switch"><button type="button" id="loginTab" class="active">Entrar</button><button type="button" id="signupTab">Criar conta</button></div>
+  <p class="demo-auth-hint" id="demoAuthHint">Login local para testes. Não é uma conta real.</p><form id="authForm"><label for="authEmail" id="authEmailLabel">Seu e-mail</label><input id="authEmail" type="email" autocomplete="email" required placeholder="voce@email.com"/>
+    <label for="authPassword" id="authPassLabel">Senha</label><input id="authPassword" type="password" autocomplete="current-password" minlength="8" required placeholder="••••••••"/>
+    <label class="demo-dev-opt" hidden><input type="checkbox" id="demoDevOption"/><span id="demoDevLabel">Criar como desenvolvedor local</span></label><button class="auth-submit" type="submit" id="authSubmit">Entrar</button>
+  </form><p class="auth-info" id="authMessage" role="status"></p>
+</dialog>
+<div role="status" aria-live="polite" id="toast" class="toast" hidden></div>
+</body>
+</html>
